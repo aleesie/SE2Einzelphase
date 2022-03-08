@@ -17,9 +17,12 @@ import java.net.Socket;
 public class MainActivity extends AppCompatActivity {
 
     public Button btn_send;
+    public Button btn_calc;
     public EditText input_txt;
     public TextView srvroutput_txt;
     private String input;
+    private String output;
+    private TextView calcoutput_txt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         btn_send = findViewById(R.id.btn_send);
         input_txt = findViewById(R.id.input_txt);
         srvroutput_txt = findViewById(R.id.srvroutput_txt);
+
         //add eventlistener to send_button
         btn_send.setOnClickListener(new View.OnClickListener(){
             @Override
