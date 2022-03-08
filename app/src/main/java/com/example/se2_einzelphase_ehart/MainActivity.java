@@ -32,11 +32,19 @@ public class MainActivity extends AppCompatActivity {
         btn_send = findViewById(R.id.btn_send);
         input_txt = findViewById(R.id.input_txt);
         srvroutput_txt = findViewById(R.id.srvroutput_txt);
-
+        btn_calc = findViewById(R.id.btn_calc);
+        calcoutput_txt = findViewById(R.id.clc_output);
         //add eventlistener to send_button
         btn_send.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){taskSendButton();}
+        });
+        //add eventlistener to calc_button
+        btn_calc.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                taskCalcButton();
+            }
         });
     }
 
@@ -66,5 +74,9 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }.start();
+    }
+
+    public void taskCalcButton(){
+
     }
 }
