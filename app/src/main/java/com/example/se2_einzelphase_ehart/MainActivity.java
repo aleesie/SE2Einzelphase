@@ -77,6 +77,29 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void taskCalcButton(){
-
+        // 12021905 % 7 = 0 --> implemented task 0
+        input = input_txt.getText().toString();
+        int counter = 0;
+        Integer alternating_checksum = 0;
+        String evenOdd = "odd";
+        if(input.length() > 0){
+           String[] digits = input.split("");
+           for(String s : digits){
+               Integer d = Integer.parseInt(s);
+               if(counter > 0 && counter % 2 ==1){
+                   alternating_checksum -= d;
+               }
+               else if(counter > 0 && counter % 2 == 0){
+                   alternating_checksum +=d;
+               }else{
+                   alternating_checksum = d;
+               }
+               counter++;
+           }
+            if(alternating_checksum % 2 == 0){
+                evenOdd = "even";
+            }
+            calcoutput_txt.setText("alternating checksum of your matrikelnumber is "+ alternating_checksum.toString() + ". This is an  "+evenOdd + " number.");
+        }
     }
 }
