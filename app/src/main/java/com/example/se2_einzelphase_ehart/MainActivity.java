@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
     public EditText input_txt;
     public TextView srvroutput_txt;
     private String input;
-    private String output;
     private TextView calcoutput_txt;
 
     @Override
@@ -69,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
                         }
                     });
                     clientSocket.close();
+                    inFromServer.close();
+                    outToServer.close();
                 }catch (IOException e){
                     e.printStackTrace();
                 }
