@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -51,7 +52,9 @@ public class MainActivity extends AppCompatActivity {
         // creation of seperate thread, because functionality should be executed asnyc
         new Thread() {
             public void run(){
+                hideKeyboard();
                 String sending = input_txt.getText().toString();
+
                 try{
                     Socket clientSocket = new Socket("se2-isys.aau.at", 53212);
                     //output, den socket ausliefern soll --> output to server
@@ -79,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void taskCalcButton(){
         // 12021905 % 7 = 0 --> implemented task 0
+        hideKeyboard();
         input = input_txt.getText().toString();
         int counter = 0;
         Integer alternating_checksum = 0;
@@ -101,6 +105,15 @@ public class MainActivity extends AppCompatActivity {
                 evenOdd = "even";
             }
             calcoutput_txt.setText("alternating checksum of your matrikelnumber is "+ alternating_checksum.toString() + ". This is an  "+evenOdd + " number.");
+        }
+    }
+
+    public void hideKeyboard(){
+        try{
+            InputMethodManager imm = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),0);
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 }
